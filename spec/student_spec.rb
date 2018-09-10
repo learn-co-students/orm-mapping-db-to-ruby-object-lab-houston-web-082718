@@ -1,4 +1,5 @@
 require_relative 'spec_helper'
+require 'pry'
 
 describe Student do
 
@@ -65,6 +66,7 @@ describe Student do
       row = [1, "Pat", 12]
       pat = Student.new_from_db(row)
 
+
       expect(pat.id).to eq(row[0])
       expect(pat.name).to eq(row[1])
       expect(pat.grade).to eq(row[2])
@@ -80,6 +82,7 @@ describe Student do
         pat.save
 
         pat_from_db = Student.find_by_name("Pat")
+        # binding.pry
         expect(pat_from_db.name).to eq("Pat")
         expect(pat_from_db).to be_an_instance_of(Student)
       end
